@@ -17,6 +17,10 @@
 		73084A8622C61C9E00E4F6C7 /* UIView+NEPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 73084A8222C61C9E00E4F6C7 /* UIView+NEPlayer.m */; };
 		73084A8722C61C9E00E4F6C7 /* NELivePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73084A8422C61C9E00E4F6C7 /* NELivePlayerViewController.m */; };
 		73084A8822C61C9E00E4F6C7 /* NELivePlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73084A8522C61C9E00E4F6C7 /* NELivePlayerControlView.m */; };
+		7348858022D8703100C63197 /* XFCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7348857B22D8703000C63197 /* XFCameraController.m */; };
+		7348858122D8703100C63197 /* XFCameraButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7348857D22D8703000C63197 /* XFCameraButton.m */; };
+		7348858222D8703100C63197 /* XFCameraController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7348857F22D8703100C63197 /* XFCameraController.xib */; };
+		7348858622D8705A00C63197 /* XFPhotoLibraryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7348858522D8705A00C63197 /* XFPhotoLibraryManager.m */; };
 		9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; };
 		9705A1C71CF904A300538489 /* Flutter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9740EEB41CF90195004384FC /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 9740EEB21CF90195004384FC /* Debug.xcconfig */; };
@@ -55,6 +59,13 @@
 		73084A8322C61C9E00E4F6C7 /* NELivePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NELivePlayerViewController.h; sourceTree = "<group>"; };
 		73084A8422C61C9E00E4F6C7 /* NELivePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NELivePlayerViewController.m; sourceTree = "<group>"; };
 		73084A8522C61C9E00E4F6C7 /* NELivePlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NELivePlayerControlView.m; sourceTree = "<group>"; };
+		7348857A22D8703000C63197 /* XFCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFCameraController.h; sourceTree = "<group>"; };
+		7348857B22D8703000C63197 /* XFCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFCameraController.m; sourceTree = "<group>"; };
+		7348857D22D8703000C63197 /* XFCameraButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFCameraButton.m; sourceTree = "<group>"; };
+		7348857E22D8703000C63197 /* XFCameraButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFCameraButton.h; sourceTree = "<group>"; };
+		7348857F22D8703100C63197 /* XFCameraController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFCameraController.xib; sourceTree = "<group>"; };
+		7348858422D8705A00C63197 /* XFPhotoLibraryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFPhotoLibraryManager.h; sourceTree = "<group>"; };
+		7348858522D8705A00C63197 /* XFPhotoLibraryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFPhotoLibraryManager.m; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		7AFFD8ED1D35381100E5BB4D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7AFFD8EE1D35381100E5BB4D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -109,9 +120,32 @@
 			name = NELiverPlayer;
 			sourceTree = "<group>";
 		};
+		7348857C22D8703000C63197 /* XFCameraButton */ = {
+			isa = PBXGroup;
+			children = (
+				7348857D22D8703000C63197 /* XFCameraButton.m */,
+				7348857E22D8703000C63197 /* XFCameraButton.h */,
+			);
+			path = XFCameraButton;
+			sourceTree = "<group>";
+		};
+		7348858322D8705A00C63197 /* XFPhotoLibraryManager */ = {
+			isa = PBXGroup;
+			children = (
+				7348858422D8705A00C63197 /* XFPhotoLibraryManager.h */,
+				7348858522D8705A00C63197 /* XFPhotoLibraryManager.m */,
+			);
+			path = XFPhotoLibraryManager;
+			sourceTree = "<group>";
+		};
 		738E535722D8109400B581B3 /* ShotController */ = {
 			isa = PBXGroup;
 			children = (
+				7348858322D8705A00C63197 /* XFPhotoLibraryManager */,
+				7348857C22D8703000C63197 /* XFCameraButton */,
+				7348857A22D8703000C63197 /* XFCameraController.h */,
+				7348857B22D8703000C63197 /* XFCameraController.m */,
+				7348857F22D8703100C63197 /* XFCameraController.xib */,
 			);
 			name = ShotController;
 			sourceTree = "<group>";
@@ -251,6 +285,7 @@
 			files = (
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
+				7348858222D8703100C63197 /* XFCameraController.xib in Resources */,
 				9740EEB41CF90195004384FC /* Debug.xcconfig in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
@@ -339,8 +374,11 @@
 				978B8F6F1D3862AE00F588F7 /* AppDelegate.m in Sources */,
 				97C146F31CF9000F007C117D /* main.m in Sources */,
 				73084A8722C61C9E00E4F6C7 /* NELivePlayerViewController.m in Sources */,
+				7348858622D8705A00C63197 /* XFPhotoLibraryManager.m in Sources */,
 				73084A8822C61C9E00E4F6C7 /* NELivePlayerControlView.m in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				7348858122D8703100C63197 /* XFCameraButton.m in Sources */,
+				7348858022D8703100C63197 /* XFCameraController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

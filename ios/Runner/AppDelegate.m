@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "GeneratedPluginRegistrant.h"
 #import "NELivePlayerViewController.h" //视频直播的地址
+#import "XFCameraController.h"
 
 @interface AppDelegate ()
 
@@ -26,7 +27,34 @@
             NSDictionary *dic = call.arguments;
             NSString *videoStr = dic[@"address"];
             [self jumpToMainVCController:videoStr];
-        } else { //显示没有方法返回
+        } else if ([@"jumpShootVideo" isEqualToString:call.method]) {
+            [self jumpToShootVideoController:^(UIImage *image, NSError *error) {
+                NSData *data = UIImageJPEGRepresentation(image, 0.8f);
+                NSDictionary *dic = call.arguments;
+                NSLog(@"arguments = %@", dic);
+                NSDictionary *map = @{@"data":data};
+                
+                if (error == nil) {
+                    if (result) {
+                        result(map);
+                    }
+                }
+                
+                
+            } videoBlock:^(NSURL *videoUrl, CGFloat videoTimeLength, UIImage *thumbnailImage, NSError *error) {
+                NSData *data = UIImageJPEGRepresentation(thumbnailImage, 0.8f);
+                NSDictionary *map = @{@"videoUrl":videoUrl, @"length":  [NSString stringWithFormat:@"%.2f", videoTimeLength], @"thumb": data};
+                
+                if (error == nil) {
+                    if (result) {
+                        result(map);
+                    }
+                }
+//                if (result) {
+//                    result(map);
+//                }
+            }];
+        }else { //显示没有方法返回
             result(FlutterMethodNotImplemented);
         }
     }];
@@ -47,6 +75,32 @@
     } else {
         return -1;
     }
+}
+
+//跳转微信拍摄页面
+- (void)jumpToShootVideoController:(TakePhotosCompletionBlock)photoBlock
+                       videoBlock:(ShootCompletionBlock)shootBlock{
+    XFCameraController *cameraController = [XFCameraController defaultCameraController];
+    
+    __weak XFCameraController *weakCameraController = cameraController;
+    
+    cameraController.takePhotosCompletionBlock = ^(UIImage *image, NSError *error) {
+        NSLog(@"takePhotosCompletionBlock");
+        
+        photoBlock(image, error);
+        
+        [weakCameraController dismissViewControllerAnimated:YES completion:nil];
+    };
+    
+    cameraController.shootCompletionBlock = ^(NSURL *videoUrl, CGFloat videoTimeLength, UIImage *thumbnailImage, NSError *error) {
+        NSLog(@"shootCompletionBlock");
+        
+        shootBlock(videoUrl, videoTimeLength, thumbnailImage, error);
+        
+        [weakCameraController dismissViewControllerAnimated:YES completion:nil];
+    };
+    
+    [self.controller presentViewController:cameraController animated:YES completion:nil];
 }
 
 @end
