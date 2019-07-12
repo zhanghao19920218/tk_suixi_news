@@ -46,17 +46,17 @@ class LoginMemeberModel {
 }
 
 class Userinfo {
-  int id;
+  String id;
   String username;
   String nickname;
   String mobile;
   String avatar;
-  int score;
+  String score;
   String token;
-  int userId;
-  int createtime;
-  int expiretime;
-  int expiresIn;
+  String userId;
+  String createtime;
+  String expiretime;
+  String expiresIn;
 
   Userinfo(
       {this.id,
@@ -72,17 +72,17 @@ class Userinfo {
       this.expiresIn});
 
   Userinfo.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    username = json['username'];
-    nickname = json['nickname'];
-    mobile = json['mobile'];
-    avatar = json['avatar'];
-    score = json['score'];
-    token = json['token'];
-    userId = json['user_id'];
-    createtime = json['createtime'];
-    expiretime = json['expiretime'];
-    expiresIn = json['expires_in'];
+    id = '${json['id']}';
+    username = '${json['username']}';
+    nickname = '${json['nickname']}';
+    mobile = '${json['mobile']}';
+    avatar = '${json['avatar']}';
+    score = '${json['score']}';
+    token = '${json['token']}';
+    userId = '${json['user_id']}';
+    createtime = '${json['createtime']}';
+    expiretime = '${json['expiretime']}';
+    expiresIn = '${json['expires_in']}';
   }
 
   Map<String, dynamic> toJson() {
