@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:tk_suixi_news/pages/send_images_page/send_images_item.dart';
+import 'package:tk_suixi_news/provide/send_images_page_provider.dart';
 
 //发布图文的View
-class SendImagesPage extends StatelessWidget {
-  //图像地址
-  List<String> images = [];
 
-  void setImage(String imageName){
-    //增加参数
-    images.add(imageName);
-  }
+// const BaseUrl = 'http://medium.tklvyou.cn/'; //视频播放的基本地址
+
+class SendImagesPage extends StatelessWidget {
 
   //用户的名称
   String name = '';
-
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +24,8 @@ class SendImagesPage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 _titleBar(context),
+                _describeText(),
+                SendImagesItem(),
               ],
             ),
           ),
@@ -34,12 +34,12 @@ class SendImagesPage extends StatelessWidget {
     );
   }
 
-
   //取消按钮
   Widget _cancelButton(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.of(context).pop();
+        Provider.of<SendImagesPageProvider>(context).clearImages(); //清空相册
       },
       child: Text('取消',
           style: TextStyle(
@@ -83,6 +83,7 @@ class SendImagesPage extends StatelessWidget {
       padding: const EdgeInsets.only(left: 15, right: 15, top: 36),
       height: ScreenUtil().setHeight(230),
       child: CupertinoTextField(
+        autofocus: true,
         onChanged: (text) {
           //修改内容标题
           this.name = text;

@@ -4,6 +4,7 @@ import 'package:tk_suixi_news/provide/found_password_page_provider.dart';
 import 'package:tk_suixi_news/provide/home_news_info_provider.dart';
 import 'package:tk_suixi_news/provide/passager_show_like_provider.dart';
 import 'package:tk_suixi_news/provide/profit_edit_page_provider.dart';
+import 'package:tk_suixi_news/provide/send_images_page_provider.dart';
 import 'package:tk_suixi_news/provide/send_video_page_provider.dart';
 import 'package:tk_suixi_news/provide/sign_up_page_provider.dart';
 import 'pages/index_page.dart'; //首页
@@ -26,6 +27,7 @@ void main() {
   var homeNewsPageProvider = new HomeNewsInfoProvider(); //专栏信息的Provider
   var passagerLikeShowProvider = new PassagesShowLikeProvider(); //喜欢文章的Provider
   var sendVideoPageProvider = new SendVideoPageProvider(); //发布V视频的Provider
+  var sendImagesPageProvider = new SendImagesPageProvider(); //发布一个图文信息的Provider
 
   //多重状态管理
   runApp(MultiProvider(
@@ -56,6 +58,9 @@ void main() {
       ),
       Provider<SendVideoPageProvider>.value(
         value: sendVideoPageProvider,
+      ),
+      Provider<SendImagesPageProvider>.value(
+        value: sendImagesPageProvider,
       )
     ],
     child: MyApp(),

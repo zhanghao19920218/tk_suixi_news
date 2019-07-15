@@ -1,10 +1,16 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:tk_suixi_news/config/native_method.dart';
 import 'package:tk_suixi_news/config/progress_hud.dart';
 import 'package:tk_suixi_news/config/share_prefrence.dart';
 import 'package:tk_suixi_news/routers/application.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:tk_suixi_news/provide/send_images_page_provider.dart';
+import 'package:tk_suixi_news/model/file_upload_model.dart';
+import 'package:tk_suixi_news/services/service_method.dart';
 
 class BottomAlertSheet extends StatelessWidget {
   static const platform =
@@ -48,6 +54,15 @@ class BottomAlertSheet extends StatelessWidget {
               //如果是1拍摄就显示下个页面
               _shootVideoOrPhoto(context);
             }
+
+            if (index == 1) {
+              //增加相册照片
+              addPhotoImage(context);
+            }
+
+            if (index == 2) {
+              Navigator.pop(context);
+            }
           },
           child: Container(
             decoration: border,
@@ -84,9 +99,10 @@ class BottomAlertSheet extends StatelessWidget {
         /*
          * 拍照成功进行照片刷新 
          */
-        print('获取的照片的地址: ${result['imageUrl']}');
-
-        Application.router.navigateTo(context, '/videoSendPage');
+        String imageUrl = result['imageUrl'];
+        Navigator.pop(context);
+        Application.router.navigateTo(context,
+            '/imagesSendPage?imageUrl=${Uri.encodeComponent(imageUrl)}');
       } else {
         /*
         * 录取视频成功进行上传
@@ -95,6 +111,7 @@ class BottomAlertSheet extends StatelessWidget {
         String imageUrl = result['imageUrl'];
         String videoUrl = result['videoUrl'];
         String videoTimeLength = result['videoTimeLength'];
+        Navigator.pop(context);
         Application.router.navigateTo(
             context,
             "/videoSendPage" +
@@ -103,5 +120,30 @@ class BottomAlertSheet extends StatelessWidget {
     } on PlatformException catch (e) {
       print("Failed to get battery level: '${e.message}'");
     }
+  }
+
+  //从相册里面选择
+  Future addPhotoImage(BuildContext context) async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    if (image == null) {
+      //没有照片直接返回
+      return;
+    }
+
+    FormData formData = new FormData.from({
+      "file": new UploadFileInfo(image, "avatar.png"),
+    });
+
+    Http.request('uploadFile', formData: formData).then((val) {
+      UploadFileModel model = UploadFileModel.fromJson(val);
+      //成功后更新图片
+      if (model.code == 1) {
+        String imageUrl = model.data.url;
+        print('跳转的Url$imageUrl');
+        Navigator.pop(context); //关闭子页面
+        Application.router.navigateTo(context,
+            '/imagesSendPage?imageUrl=${Uri.encodeComponent(imageUrl)}');
+      }
+    });
   }
 }

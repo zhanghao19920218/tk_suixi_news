@@ -37,6 +37,8 @@ dependencies:
   video_player: ^0.10.1+3
   badges: ^1.0.3 #角标
 
+  image_picker: ^0.6.0+3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -77,6 +79,8 @@ flutter:
     - lib/assets/login_assets/logo.png  #微博登录
     - lib/assets/login_assets/choose.png  #选中
     - lib/assets/login_assets/unchoose.png  #未选中
+    - lib/assets/delete.png  #未选中
+    - lib/assets/add_photo.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

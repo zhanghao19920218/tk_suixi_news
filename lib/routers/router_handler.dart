@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
+import 'package:provider/provider.dart';
 import 'package:tk_suixi_news/pages/index_page.dart';
 import 'package:tk_suixi_news/pages/login_page/login_page.dart';
 import 'package:tk_suixi_news/pages/my_faovirte_page.dart';
@@ -9,7 +10,9 @@ import 'package:tk_suixi_news/pages/send_video_page/send_video_page.dart';
 import '../pages/news_detail_page.dart';
 import '../pages/sign_up_page/sign_up_page.dart';
 import '../pages/forget_pass_page/forget_pass_page.dart';
+import 'package:tk_suixi_news/provide/send_images_page_provider.dart';
 
+const BaseUrl = 'http://medium.tklvyou.cn/'; //视频播放的基本地址
 //新闻详情页面
 Handler newsDetailHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
@@ -73,7 +76,6 @@ Handler sendVideoPageHandler = Handler(
 Handler sendImagesPageHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   String imageUrl = params['imageUrl'].first; //图片地址
-  SendImagesPage page = SendImagesPage();
-  page.setImage(imageUrl);
-  return page;
+  Provider.of<SendImagesPageProvider>(context).setImage(BaseUrl + imageUrl);
+  return SendImagesPage();
 });
