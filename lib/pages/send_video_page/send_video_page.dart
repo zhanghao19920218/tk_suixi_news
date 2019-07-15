@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart'; //直播列表的跳转
+import 'package:tk_suixi_news/config/native_method.dart';
 import 'package:tk_suixi_news/config/progress_hud.dart';
 import 'package:tk_suixi_news/provide/send_video_page_provider.dart';
 
@@ -10,7 +11,7 @@ const BaseUrl = 'http://medium.tklvyou.cn/'; //视频播放的基本地址
 
 class SendVideoPage extends StatelessWidget {
   static const platform =
-      const MethodChannel('com.example.tkSuixiNews/videoShow'); //获取平台的方法
+      const MethodChannel(methodChannel); //获取平台的方法
   //视频地址
   final String videoUrl;
   //图像地址
@@ -140,7 +141,7 @@ class SendVideoPage extends StatelessWidget {
     try {
       Map<String, dynamic> map = {"address": BaseUrl + this.videoUrl};
       final int result =
-          await platform.invokeMethod('jumpVideoOnlineShow', map);
+          await platform.invokeMethod(playMethod, map);
       print(result);
     } on PlatformException catch (e) {
       print("Failed to get battery level: '${e.message}'");

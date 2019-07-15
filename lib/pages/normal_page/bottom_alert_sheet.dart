@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tk_suixi_news/config/native_method.dart';
 import 'package:tk_suixi_news/config/progress_hud.dart';
 import 'package:tk_suixi_news/config/share_prefrence.dart';
 import 'package:tk_suixi_news/routers/application.dart';
@@ -69,7 +70,7 @@ class BottomAlertSheet extends StatelessWidget {
     try {
       //传递里面参数
       Map<String, dynamic> map = {"token": token};
-      final result = await platform.invokeMethod('jumpShootVideo', map);
+      final result = await platform.invokeMethod(shootMethod, map);
       /*
        * 获取不成功进行
        */

@@ -12,6 +12,7 @@ class Routes {
   static String userForgetPassword = '/userForgetPassword'; //用户忘记密码
   static String indexPage = '/indexPage'; //应用首页
   static String sendVideoPage = '/videoSendPage'; //发送视频页面
+  static String sendImagePage = '/imagesSendPage'; //发送图文的页面
   static void configureRoutes(Router router){
     router.notFoundHandler = Handler(
       handlerFunc: (BuildContext context, Map<String, List<String>> params) {
@@ -29,5 +30,6 @@ class Routes {
     router.define(userForgetPassword, handler: mypasswordHandler);
     router.define(indexPage, handler: indexPageHandlder);
     router.define(sendVideoPage, handler: sendVideoPageHandler);
+    router.define(sendImagePage, handler: sendImagesPageHandler);
   }
 }

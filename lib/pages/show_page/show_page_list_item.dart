@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:async';
-import 'package:flutter/services.dart'; //直播列表的跳转
+import 'package:flutter/services.dart';
+import 'package:tk_suixi_news/config/native_method.dart'; //直播列表的跳转
 //V视直播列表的Item
 
 //首页的下方时间，观看数量和点赞
@@ -9,7 +10,7 @@ const style = TextStyle(color: Colors.black45); //通用的Style
 
 class ShowPageListItem extends StatelessWidget {
   static const platform =
-      const MethodChannel('com.example.tkSuixiNews/videoShow'); //获取平台的方法
+      const MethodChannel(methodChannel); //获取平台的方法
   //显示第一帧照片的信息
   final String video_first_img;
   //显示视频信息
@@ -107,7 +108,7 @@ class ShowPageListItem extends StatelessWidget {
       Map<String, dynamic> map = {
       "address": "https://hwapi.yunshicloud.com/m87oxo/251011.m3u8"
     };
-      final int result = await platform.invokeMethod('jumpVideoOnlineShow', map);
+      final int result = await platform.invokeMethod(playMethod, map);
       print(result);
     } on PlatformException catch (e) {
       print("Failed to get battery level: '${e.message}'");

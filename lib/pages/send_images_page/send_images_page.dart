@@ -4,6 +4,14 @@ import 'package:flutter/cupertino.dart';
 
 //发布图文的View
 class SendImagesPage extends StatelessWidget {
+  //图像地址
+  List<String> images = [];
+
+  void setImage(String imageName){
+    //增加参数
+    images.add(imageName);
+  }
+
   //用户的名称
   String name = '';
 
@@ -87,5 +95,4 @@ class SendImagesPage extends StatelessWidget {
       ),
     );
   }
-
 }
