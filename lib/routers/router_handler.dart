@@ -4,6 +4,7 @@ import 'package:tk_suixi_news/pages/index_page.dart';
 import 'package:tk_suixi_news/pages/login_page/login_page.dart';
 import 'package:tk_suixi_news/pages/my_faovirte_page.dart';
 import 'package:tk_suixi_news/pages/person_edit_page.dart';
+import 'package:tk_suixi_news/pages/send_video_page/send_video_page.dart';
 import '../pages/news_detail_page.dart';
 import '../pages/sign_up_page/sign_up_page.dart';
 import '../pages/forget_pass_page/forget_pass_page.dart';
@@ -52,4 +53,17 @@ Handler mypasswordHandler = Handler(
 Handler indexPageHandlder = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   return IndexPage();
+});
+
+//发送视频的页面
+Handler sendVideoPageHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  String videoUrl = params['videoUrl'].first; //视频地址
+  String imageUrl = params['imageUrl'].first; //图片地址
+  String timeLength = params['timeLength'].first; //时间的长度
+  return SendVideoPage(
+    videoUrl: videoUrl,
+    imageUrl: imageUrl,
+    videoLengthUrl: timeLength,
+  );
 });

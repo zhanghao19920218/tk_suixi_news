@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TGHttpParamsManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -21,6 +21,16 @@
 		7348858122D8703100C63197 /* XFCameraButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7348857D22D8703000C63197 /* XFCameraButton.m */; };
 		7348858222D8703100C63197 /* XFCameraController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7348857F22D8703100C63197 /* XFCameraController.xib */; };
 		7348858622D8705A00C63197 /* XFPhotoLibraryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7348858522D8705A00C63197 /* XFPhotoLibraryManager.m */; };
+		73A8CD8222DC10B400E9A0E6 /* TGHttpArgu.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A8CD7822DC10B400E9A0E6 /* TGHttpArgu.m */; };
+		73A8CD8322DC10B400E9A0E6 /* TGHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A8CD7C22DC10B400E9A0E6 /* TGHttpClient.m */; };
+		73A8CD8422DC10B400E9A0E6 /* TGHttpParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A8CD7F22DC10B400E9A0E6 /* TGHttpParams.m */; };
+		73A8CD8522DC10B400E9A0E6 /* TGHttpParamsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A8CD8022DC10B400E9A0E6 /* TGHttpParamsManager.m */; };
+		73A8CD8922DC130C00E9A0E6 /* BLEncodeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A8CD8822DC130C00E9A0E6 /* BLEncodeHelper.m */; };
+		73A8CD8D22DC16C700E9A0E6 /* TGStaticTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A8CD8C22DC16C700E9A0E6 /* TGStaticTool.m */; };
+		73A8CD9122DC1A7200E9A0E6 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A8CD9022DC1A7200E9A0E6 /* BaseViewController.m */; };
+		73BA24C822DC259100D0647B /* FileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73BA24C722DC259100D0647B /* FileModel.m */; };
+		73BA24CC22DC266C00D0647B /* NSString+IsEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 73BA24CB22DC266C00D0647B /* NSString+IsEmpty.m */; };
+		73BA24D022DC51F900D0647B /* UploadMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 73BA24CF22DC51F900D0647B /* UploadMethod.m */; };
 		9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; };
 		9705A1C71CF904A300538489 /* Flutter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9740EEB41CF90195004384FC /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 9740EEB21CF90195004384FC /* Debug.xcconfig */; };
@@ -66,6 +76,27 @@
 		7348857F22D8703100C63197 /* XFCameraController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFCameraController.xib; sourceTree = "<group>"; };
 		7348858422D8705A00C63197 /* XFPhotoLibraryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFPhotoLibraryManager.h; sourceTree = "<group>"; };
 		7348858522D8705A00C63197 /* XFPhotoLibraryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFPhotoLibraryManager.m; sourceTree = "<group>"; };
+		73A8CD7622DC10B400E9A0E6 /* TGAPIs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGAPIs.h; sourceTree = "<group>"; };
+		73A8CD7822DC10B400E9A0E6 /* TGHttpArgu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGHttpArgu.m; sourceTree = "<group>"; };
+		73A8CD7922DC10B400E9A0E6 /* TGHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGHttpClient.h; sourceTree = "<group>"; };
+		73A8CD7A22DC10B400E9A0E6 /* TGHttpParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGHttpParams.h; sourceTree = "<group>"; };
+		73A8CD7B22DC10B400E9A0E6 /* TGHttpParamsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGHttpParamsManager.h; sourceTree = "<group>"; };
+		73A8CD7C22DC10B400E9A0E6 /* TGHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGHttpClient.m; sourceTree = "<group>"; };
+		73A8CD7D22DC10B400E9A0E6 /* TGHttpArgu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGHttpArgu.h; sourceTree = "<group>"; };
+		73A8CD7F22DC10B400E9A0E6 /* TGHttpParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGHttpParams.m; sourceTree = "<group>"; };
+		73A8CD8022DC10B400E9A0E6 /* TGHttpParamsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGHttpParamsManager.m; sourceTree = "<group>"; };
+		73A8CD8722DC130C00E9A0E6 /* BLEncodeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEncodeHelper.h; sourceTree = "<group>"; };
+		73A8CD8822DC130C00E9A0E6 /* BLEncodeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEncodeHelper.m; sourceTree = "<group>"; };
+		73A8CD8B22DC16C700E9A0E6 /* TGStaticTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGStaticTool.h; sourceTree = "<group>"; };
+		73A8CD8C22DC16C700E9A0E6 /* TGStaticTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGStaticTool.m; sourceTree = "<group>"; };
+		73A8CD8F22DC1A7200E9A0E6 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		73A8CD9022DC1A7200E9A0E6 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		73BA24C622DC259100D0647B /* FileModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileModel.h; sourceTree = "<group>"; };
+		73BA24C722DC259100D0647B /* FileModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileModel.m; sourceTree = "<group>"; };
+		73BA24CA22DC266C00D0647B /* NSString+IsEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IsEmpty.h"; sourceTree = "<group>"; };
+		73BA24CB22DC266C00D0647B /* NSString+IsEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IsEmpty.m"; sourceTree = "<group>"; };
+		73BA24CE22DC51F900D0647B /* UploadMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadMethod.h; sourceTree = "<group>"; };
+		73BA24CF22DC51F900D0647B /* UploadMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadMethod.m; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		7AFFD8ED1D35381100E5BB4D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7AFFD8EE1D35381100E5BB4D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -141,6 +172,12 @@
 		738E535722D8109400B581B3 /* ShotController */ = {
 			isa = PBXGroup;
 			children = (
+				73BA24CD22DC51E300D0647B /* Utils */,
+				73BA24C922DC266C00D0647B /* NSString+IsEmpty */,
+				73BA24C522DC257D00D0647B /* Model */,
+				73A8CD8A22DC16C700E9A0E6 /* StaticTool */,
+				73A8CD8622DC130C00E9A0E6 /* BLEncodeHelper */,
+				73A8CD7522DC10B400E9A0E6 /* HTTPClient */,
 				7348858322D8705A00C63197 /* XFPhotoLibraryManager */,
 				7348857C22D8703000C63197 /* XFCameraButton */,
 				7348857A22D8703000C63197 /* XFCameraController.h */,
@@ -148,6 +185,76 @@
 				7348857F22D8703100C63197 /* XFCameraController.xib */,
 			);
 			name = ShotController;
+			sourceTree = "<group>";
+		};
+		73A8CD7522DC10B400E9A0E6 /* HTTPClient */ = {
+			isa = PBXGroup;
+			children = (
+				73A8CD7622DC10B400E9A0E6 /* TGAPIs.h */,
+				73A8CD7D22DC10B400E9A0E6 /* TGHttpArgu.h */,
+				73A8CD7822DC10B400E9A0E6 /* TGHttpArgu.m */,
+				73A8CD7922DC10B400E9A0E6 /* TGHttpClient.h */,
+				73A8CD7C22DC10B400E9A0E6 /* TGHttpClient.m */,
+				73A8CD7A22DC10B400E9A0E6 /* TGHttpParams.h */,
+				73A8CD7F22DC10B400E9A0E6 /* TGHttpParams.m */,
+				73A8CD7B22DC10B400E9A0E6 /* TGHttpParamsManager.h */,
+				73A8CD8022DC10B400E9A0E6 /* TGHttpParamsManager.m */,
+			);
+			path = HTTPClient;
+			sourceTree = "<group>";
+		};
+		73A8CD8622DC130C00E9A0E6 /* BLEncodeHelper */ = {
+			isa = PBXGroup;
+			children = (
+				73A8CD8722DC130C00E9A0E6 /* BLEncodeHelper.h */,
+				73A8CD8822DC130C00E9A0E6 /* BLEncodeHelper.m */,
+			);
+			path = BLEncodeHelper;
+			sourceTree = "<group>";
+		};
+		73A8CD8A22DC16C700E9A0E6 /* StaticTool */ = {
+			isa = PBXGroup;
+			children = (
+				73A8CD8B22DC16C700E9A0E6 /* TGStaticTool.h */,
+				73A8CD8C22DC16C700E9A0E6 /* TGStaticTool.m */,
+			);
+			path = StaticTool;
+			sourceTree = "<group>";
+		};
+		73A8CD8E22DC1A6600E9A0E6 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				73A8CD8F22DC1A7200E9A0E6 /* BaseViewController.h */,
+				73A8CD9022DC1A7200E9A0E6 /* BaseViewController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		73BA24C522DC257D00D0647B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				73BA24C622DC259100D0647B /* FileModel.h */,
+				73BA24C722DC259100D0647B /* FileModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		73BA24C922DC266C00D0647B /* NSString+IsEmpty */ = {
+			isa = PBXGroup;
+			children = (
+				73BA24CA22DC266C00D0647B /* NSString+IsEmpty.h */,
+				73BA24CB22DC266C00D0647B /* NSString+IsEmpty.m */,
+			);
+			path = "NSString+IsEmpty";
+			sourceTree = "<group>";
+		};
+		73BA24CD22DC51E300D0647B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				73BA24CE22DC51F900D0647B /* UploadMethod.h */,
+				73BA24CF22DC51F900D0647B /* UploadMethod.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		95A0DDDA68AD3E2D8F49072F /* Pods */ = {
@@ -196,6 +303,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				73A8CD8E22DC1A6600E9A0E6 /* Base */,
 				738E535722D8109400B581B3 /* ShotController */,
 				73084A7F22C61C9000E4F6C7 /* NELiverPlayer */,
 				7AFFD8ED1D35381100E5BB4D /* AppDelegate.h */,
@@ -255,7 +363,7 @@
 				TargetAttributes = {
 					97C146ED1CF9000F007C117D = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = VKSGMUVB34;
+						DevelopmentTeam = A9K56W497Z;
 					};
 				};
 			};
@@ -370,9 +478,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73A8CD8D22DC16C700E9A0E6 /* TGStaticTool.m in Sources */,
 				73084A8622C61C9E00E4F6C7 /* UIView+NEPlayer.m in Sources */,
 				978B8F6F1D3862AE00F588F7 /* AppDelegate.m in Sources */,
 				97C146F31CF9000F007C117D /* main.m in Sources */,
+				73A8CD8422DC10B400E9A0E6 /* TGHttpParams.m in Sources */,
+				73A8CD8522DC10B400E9A0E6 /* TGHttpParamsManager.m in Sources */,
+				73BA24C822DC259100D0647B /* FileModel.m in Sources */,
+				73BA24D022DC51F900D0647B /* UploadMethod.m in Sources */,
+				73A8CD8922DC130C00E9A0E6 /* BLEncodeHelper.m in Sources */,
+				73A8CD8322DC10B400E9A0E6 /* TGHttpClient.m in Sources */,
+				73A8CD8222DC10B400E9A0E6 /* TGHttpArgu.m in Sources */,
+				73A8CD9122DC1A7200E9A0E6 /* BaseViewController.m in Sources */,
+				73BA24CC22DC266C00D0647B /* NSString+IsEmpty.m in Sources */,
 				73084A8722C61C9E00E4F6C7 /* NELivePlayerViewController.m in Sources */,
 				7348858622D8705A00C63197 /* XFPhotoLibraryManager.m in Sources */,
 				73084A8822C61C9E00E4F6C7 /* NELivePlayerControlView.m in Sources */,
@@ -458,7 +576,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = VKSGMUVB34;
+				DEVELOPMENT_TEAM = A9K56W497Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -586,7 +704,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = VKSGMUVB34;
+				DEVELOPMENT_TEAM = A9K56W497Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -612,7 +730,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = VKSGMUVB34;
+				DEVELOPMENT_TEAM = A9K56W497Z;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

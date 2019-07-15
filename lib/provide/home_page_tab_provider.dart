@@ -63,5 +63,6 @@ class HomePageTabProvider {
 
   dispose() {
     _streamController.close();
+    _model.pageController.dispose();
   }
 }

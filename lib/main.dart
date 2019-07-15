@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tk_suixi_news/pages/login_page/login_page.dart';
 import 'package:tk_suixi_news/provide/found_password_page_provider.dart';
+import 'package:tk_suixi_news/provide/home_news_info_provider.dart';
+import 'package:tk_suixi_news/provide/passager_show_like_provider.dart';
 import 'package:tk_suixi_news/provide/profit_edit_page_provider.dart';
 import 'package:tk_suixi_news/provide/sign_up_page_provider.dart';
 import 'pages/index_page.dart'; //首页
@@ -20,6 +22,8 @@ void main() {
   var profitEditPageProvider = new ProfitEidtPageProvider(); //用户编辑页面的Provider管理
   var signInPageProvider = new SignUpPageProvider(); //获取注册页面的Provider
   var foundpassProvider = new FoundPasswordPageProvider(); //获取重置密码的Provider
+  var homeNewsPageProvider = new HomeNewsInfoProvider(); //专栏信息的Provider
+  var passagerLikeShowProvider = new PassagesShowLikeProvider(); //喜欢文章的Provider
 
   //多重状态管理
   runApp(MultiProvider(
@@ -41,6 +45,12 @@ void main() {
       ),
       Provider<FoundPasswordPageProvider>.value(
         value: foundpassProvider,
+      ),
+      Provider<HomeNewsInfoProvider>.value(
+        value: homeNewsPageProvider,
+      ),
+      Provider<PassagesShowLikeProvider>.value(
+        value: passagerLikeShowProvider,
       )
     ],
     child: MyApp(),

@@ -5,4 +5,7 @@ const servicePath={
   'sendCode': serviceUrl+'api/sms/send', //请求获取验证码
   'registerUser': serviceUrl+'api/user/register', //注册会员
   'resetPassword': serviceUrl + 'api/user/resetpwd', //重置密码
+  'articleIndex': serviceUrl + 'api/article/index', //内容列表
+  'uploadFile': serviceUrl + 'api/common/upload', //上传文件的接口
+  'like': serviceUrl + 'api/like/add', //点赞文章
 };

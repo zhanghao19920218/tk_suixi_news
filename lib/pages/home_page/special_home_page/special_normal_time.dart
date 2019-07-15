@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:tk_suixi_news/provide/passager_show_like_provider.dart';
 
 //首页的下方时间，观看数量和点赞
 const style = TextStyle(color: Colors.black45); //通用的Style
@@ -32,7 +34,7 @@ class SpecialNormalTime extends StatelessWidget {
             width: ScreenUtil().setWidth(50.0),
           ),
           //点赞数量
-          _goodLook(),
+          _goodLook(context),
         ],
       ),
     );
@@ -58,8 +60,11 @@ class SpecialNormalTime extends StatelessWidget {
   }
 
   //点赞的数量
-  Widget _goodLook() {
+  Widget _goodLook(BuildContext context) {
     return InkWell(
+      onTap: (){
+        Provider.of<PassagesShowLikeProvider>(context).passageerLikesGoods('1');
+      },
       child: Row(
         children: <Widget>[
           //显示Icon,

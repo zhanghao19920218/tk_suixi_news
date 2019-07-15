@@ -8,6 +8,8 @@ import 'package:tk_suixi_news/config/share_prefrence.dart'; //没法使用变量
 
 Dio dio;
 
+//代理的Proxy地址
+const String proxy = 'PROXY 192.168.0.101:8888';
 //单例化dio
 class Http {
   static Dio instance() {
@@ -15,6 +17,20 @@ class Http {
       return dio; //实例化dio
     }
     dio = new Dio();
+
+    //--------flutter抓包---------- // ip:port
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (client) {
+      // config the http client
+      client.findProxy = (uri) {
+        //proxy all request to localhost:8888
+        return proxy;
+      };
+      // you can also create a new HttpClient to dio
+      // return new HttpClient();
+    };
+    //----------------------------------------
+
     //增加拦截器
     dio.interceptors.add(
       InterceptorsWrapper(
@@ -46,17 +62,19 @@ class Http {
       instance().options.contentType =
           ContentType.parse('application/x-www-form-urlencoded');
       String token = await Prefenerce.share.getToken(); //获取token
-      instance().options.headers['Authorization'] = token;
+      instance().options.headers['token'] = token;
+      print('请求头' +instance().options.headers.toString());
       if (formData == null) {
         response = await instance().post(servicePath[url]); //异步请求成功
       } else {
         print('请求参数: ${formData.toString()}');
-        response = await instance().post(servicePath[url], data: formData); //异步请求成功
+        response =
+            await instance().post(servicePath[url], data: formData); //异步请求成功
       }
       if (response.statusCode == 200) {
         print('请求获取的数据:${response.data}');
         int status = response.data['code'];
-        String errorMessage = response.data['errmsg'];
+        String errorMessage = response.data['msg'];
         if (status == 1) {
           return response.data;
         } else {
@@ -67,7 +85,7 @@ class Http {
       }
     } catch (e) {
       Loading.alert('${e.toString()}', 1);
-      return print('ERROR: ========>$e');
+      return 'ERROR: ========>$e';
     }
   }
 }

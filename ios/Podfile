@@ -35,6 +35,9 @@ end
 target 'Runner' do
   # Prepare symlinks folder. We use symlinks to avoid having Podfile.lock
   # referring to absolute paths on developers' machines.
+  pod 'MBProgressHUD'
+  pod 'AFNetworking'
+  pod 'MJExtension'
   system('rm -rf .symlinks')
   system('mkdir -p .symlinks/plugins')
 

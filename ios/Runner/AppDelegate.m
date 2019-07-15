@@ -3,6 +3,8 @@
 #import "NELivePlayerViewController.h" //视频直播的地址
 #import "XFCameraController.h"
 
+#import "UploadMethod.h"
+
 @interface AppDelegate ()
 
 @property (nonatomic, strong) FlutterViewController *controller;
@@ -28,31 +30,35 @@
             NSString *videoStr = dic[@"address"];
             [self jumpToMainVCController:videoStr];
         } else if ([@"jumpShootVideo" isEqualToString:call.method]) {
-            [self jumpToShootVideoController:^(UIImage *image, NSError *error) {
-                NSData *data = UIImageJPEGRepresentation(image, 0.8f);
-                NSDictionary *dic = call.arguments;
-                NSLog(@"arguments = %@", dic);
-                NSDictionary *map = @{@"data":data};
-                
-                if (error == nil) {
-                    if (result) {
-                        result(map);
-                    }
+            //保存token到本地
+            NSDictionary *dic = call.arguments;
+            NSString *token = dic[@"token"];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:token forKey:@"token"];
+            
+            [self jumpToShootVideoController:^(NSString *imageUrl, BOOL isSuccess) {
+                NSString *success = isSuccess ? @"success" : @"failure";
+                NSDictionary *map = @{
+                                      @"imageUrl":imageUrl,
+                                      @"isSuccess":success,
+                                      @"image":@"1"
+                                      };
+                if (result) {
+                    result(map);
                 }
                 
-                
-            } videoBlock:^(NSURL *videoUrl, CGFloat videoTimeLength, UIImage *thumbnailImage, NSError *error) {
-                NSData *data = UIImageJPEGRepresentation(thumbnailImage, 0.8f);
-                NSDictionary *map = @{@"videoUrl":videoUrl, @"length":  [NSString stringWithFormat:@"%.2f", videoTimeLength], @"thumb": data};
-                
-                if (error == nil) {
-                    if (result) {
-                        result(map);
-                    }
+            } videoBlock:^(NSString *videoUrl, CGFloat videoTimeLength, NSString *imageUrl, BOOL isSuccess) {
+                NSString *success = isSuccess ? @"success" : @"failure";
+                NSDictionary *map = @{
+                                      @"videoUrl":videoUrl,
+                                      @"videoTimeLength" : [NSString stringWithFormat:@"%.2f", videoTimeLength] ,
+                                      @"imageUrl": imageUrl,
+                                      @"isSuccess": success,
+                                      @"image": @"2"
+                                      };
+                if (result) {
+                    result(map);
                 }
-//                if (result) {
-//                    result(map);
-//                }
             }];
         }else { //显示没有方法返回
             result(FlutterMethodNotImplemented);
@@ -78,29 +84,76 @@
 }
 
 //跳转微信拍摄页面
-- (void)jumpToShootVideoController:(TakePhotosCompletionBlock)photoBlock
-                       videoBlock:(ShootCompletionBlock)shootBlock{
+- (int)jumpToShootVideoController:(ImageCompletionBlock)photoBlock
+                       videoBlock:(CompletionBlock)shootBlock{
+    
     XFCameraController *cameraController = [XFCameraController defaultCameraController];
     
     __weak XFCameraController *weakCameraController = cameraController;
     
+    //拍照的Block
     cameraController.takePhotosCompletionBlock = ^(UIImage *image, NSError *error) {
         NSLog(@"takePhotosCompletionBlock");
         
-        photoBlock(image, error);
+        //在主线程里面调用
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [[UploadMethod shareInstance] uploadAnImageFile:image
+                               andCamer:weakCameraController
+                           SuccessBlock:^(NSString *fileId, BOOL isSuccess) {
+                               if (isSuccess) {
+                                   photoBlock(fileId, isSuccess);
+                                   [weakCameraController dismissViewControllerAnimated:YES completion:nil];
+                               } else {
+                                   [weakCameraController dismissViewControllerAnimated:YES completion:nil];
+                               }
+                           }];
+        }];
         
-        [weakCameraController dismissViewControllerAnimated:YES completion:nil];
     };
     
+    //录像的Block
     cameraController.shootCompletionBlock = ^(NSURL *videoUrl, CGFloat videoTimeLength, UIImage *thumbnailImage, NSError *error) {
         NSLog(@"shootCompletionBlock");
         
-        shootBlock(videoUrl, videoTimeLength, thumbnailImage, error);
+        //上传视频的数据
+        NSString *path = [videoUrl path];
+        NSData *data = [NSData dataWithContentsOfFile:path];
         
-        [weakCameraController dismissViewControllerAnimated:YES completion:nil];
+        //在主线程里面调用
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [[UploadMethod shareInstance] uploadAnVideoFile:data
+                                                   andCamer:weakCameraController
+                                               SuccessBlock:^(NSString *fileId, BOOL isSuccess) {
+                                                   if (isSuccess) { //如果成功再上传照片
+                                                       NSString *videosUrl = fileId; //视频的地址
+                                                       [[UploadMethod shareInstance] uploadAnImageFile:thumbnailImage
+                                                                                              andCamer:weakCameraController
+                                                                                          SuccessBlock:^(NSString *fileId, BOOL isSuccess) {
+                                                                                              if (isSuccess) { //上传照片成功
+                                                                                                  
+                                                                                                  shootBlock(videosUrl, videoTimeLength, fileId, isSuccess);
+                                                                                                  [weakCameraController dismissViewControllerAnimated:YES completion:nil];
+                                                                                                  
+                                                                                              } else {
+                                                                                                  [weakCameraController dismissViewControllerAnimated:YES completion:nil];
+                                                                                              }
+                                                                                          }];
+                                                   } else {
+                                                       [weakCameraController dismissViewControllerAnimated:YES completion:nil];
+                                                   }
+                                               }];
+        }];
+        
+        
     };
     
-    [self.controller presentViewController:cameraController animated:YES completion:nil];
+    
+    if (self.controller != nil) {
+        [self.controller presentViewController:cameraController animated:YES completion:nil]; //跳转页面
+        return 1;
+    } else {
+        return -1;
+    }
 }
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright © 2017年 LXF. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
 /**
  *  拍照完成后的Block回调
@@ -24,7 +24,7 @@ typedef void(^TakePhotosCompletionBlock)(UIImage *image, NSError *error);
  */
 typedef void(^ShootCompletionBlock)(NSURL *videoUrl, CGFloat videoTimeLength, UIImage *thumbnailImage, NSError *error);
 
-@interface XFCameraController : UIViewController
+@interface XFCameraController : BaseViewController
 
 /**
  *  拍照完成后的Block回调
