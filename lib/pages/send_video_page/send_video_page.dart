@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter/services.dart'; //直播列表的跳转
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart'; //直播列表的跳转
+import 'package:tk_suixi_news/config/progress_hud.dart';
+import 'package:tk_suixi_news/provide/send_video_page_provider.dart';
 
 const BaseUrl = 'http://medium.tklvyou.cn/'; //视频播放的基本地址
 
@@ -14,6 +17,8 @@ class SendVideoPage extends StatelessWidget {
   final String imageUrl;
   //视频长度
   final String videoLengthUrl;
+  //修改里面的内容
+  String name = '';
 
   SendVideoPage(
       {Key key,
@@ -56,10 +61,11 @@ class SendVideoPage extends StatelessWidget {
   }
 
   //发表按钮
-  Widget _sendButton() {
+  Widget _sendButton(BuildContext context) {
     return RaisedButton(
         onPressed: () {
           print('点击了发表视频按钮');
+          _pressedVVideoButton(context);
         },
         child: Text(
           '发表',
@@ -77,7 +83,7 @@ class SendVideoPage extends StatelessWidget {
           Expanded(
             child: _cancelButton(context),
           ),
-          _sendButton()
+          _sendButton(context)
         ],
       ),
     );
@@ -89,6 +95,10 @@ class SendVideoPage extends StatelessWidget {
       padding: const EdgeInsets.only(left: 15, right: 15, top: 36),
       height: ScreenUtil().setHeight(230),
       child: CupertinoTextField(
+        onChanged: (text) {
+          //修改内容标题
+          this.name = text;
+        },
         decoration:
             BoxDecoration(border: Border.all(color: Colors.transparent)),
         placeholder: '发布内容...',
@@ -135,5 +145,14 @@ class SendVideoPage extends StatelessWidget {
     } on PlatformException catch (e) {
       print("Failed to get battery level: '${e.message}'");
     }
+  }
+
+  //发布V视频的按钮
+  _pressedVVideoButton(BuildContext context) {
+    Provider.of<SendVideoPageProvider>(context).sendVVideoPort(
+        this.name, this.videoUrl, this.imageUrl, this.videoLengthUrl, (){
+          Loading.alert('发布V视频成功', 1);
+          Navigator.of(context).pop();
+        });
   }
 }

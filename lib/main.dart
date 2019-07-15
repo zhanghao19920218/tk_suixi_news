@@ -4,6 +4,7 @@ import 'package:tk_suixi_news/provide/found_password_page_provider.dart';
 import 'package:tk_suixi_news/provide/home_news_info_provider.dart';
 import 'package:tk_suixi_news/provide/passager_show_like_provider.dart';
 import 'package:tk_suixi_news/provide/profit_edit_page_provider.dart';
+import 'package:tk_suixi_news/provide/send_video_page_provider.dart';
 import 'package:tk_suixi_news/provide/sign_up_page_provider.dart';
 import 'pages/index_page.dart'; //首页
 import 'package:provider/provider.dart'; //导入Provider状态管理
@@ -24,6 +25,7 @@ void main() {
   var foundpassProvider = new FoundPasswordPageProvider(); //获取重置密码的Provider
   var homeNewsPageProvider = new HomeNewsInfoProvider(); //专栏信息的Provider
   var passagerLikeShowProvider = new PassagesShowLikeProvider(); //喜欢文章的Provider
+  var sendVideoPageProvider = new SendVideoPageProvider(); //发布V视频的Provider
 
   //多重状态管理
   runApp(MultiProvider(
@@ -51,6 +53,9 @@ void main() {
       ),
       Provider<PassagesShowLikeProvider>.value(
         value: passagerLikeShowProvider,
+      ),
+      Provider<SendVideoPageProvider>.value(
+        value: sendVideoPageProvider,
       )
     ],
     child: MyApp(),
@@ -74,8 +79,9 @@ class MyApp extends StatelessWidget {
       ),
       home: FutureBuilder(
         future: Prefenerce.share.getToken(),
-        builder: (context, AsyncSnapshot<String> snapshot){
-          if (snapshot.hasData) { //如果有参数
+        builder: (context, AsyncSnapshot<String> snapshot) {
+          if (snapshot.hasData) {
+            //如果有参数
             if (snapshot.data is String && (snapshot.data.isNotEmpty)) {
               return IndexPage();
             } else {

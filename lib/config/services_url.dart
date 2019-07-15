@@ -8,4 +8,5 @@ const servicePath={
   'articleIndex': serviceUrl + 'api/article/index', //内容列表
   'uploadFile': serviceUrl + 'api/common/upload', //上传文件的接口
   'like': serviceUrl + 'api/like/add', //点赞文章
+  'uploadVideo': serviceUrl + 'api/article/addv', //上传V视频的接口
 };
