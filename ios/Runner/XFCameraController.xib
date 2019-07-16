@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QXCameraController">
+            <connections>
+                <outlet property="cancelButton" destination="t5x-fn-77d" id="sHN-Lx-9Lh"/>
+                <outlet property="closeButton" destination="pjC-ZM-eD4" id="Ojd-nv-wN0"/>
+                <outlet property="confirmButton" destination="q3i-Ao-Rf9" id="ald-El-Az5"/>
+                <outlet property="focusImageView" destination="cDi-p1-6Ox" id="XV1-1E-oXu"/>
+                <outlet property="rotateCameraButton" destination="Gww-tC-G56" id="7T0-7W-Hy1"/>
+                <outlet property="takeButton" destination="VBb-wh-QTG" id="9TQ-RR-Fqj"/>
+                <outlet property="tipLabel" destination="eSc-bP-yDA" id="qwh-94-ix8"/>
+                <outlet property="view" destination="Rcc-g1-Gwv" id="ghA-gY-bGN"/>
+                <outlet property="viewContainer" destination="Rcc-g1-Gwv" id="5Kf-Ym-SqA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Rcc-g1-Gwv">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBb-wh-QTG">
+                    <rect key="frame" x="127.66666666666669" y="511" width="120" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="6zG-Vp-zsq"/>
+                        <constraint firstAttribute="width" constant="120" id="9tZ-Mt-hML"/>
+                    </constraints>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjC-ZM-eD4">
+                    <rect key="frame" x="59" y="531" width="29" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="29" id="820-ff-lcD"/>
+                        <constraint firstAttribute="height" constant="20" id="xxe-3A-aMP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" image="record_video_back"/>
+                    <connections>
+                        <action selector="closeBtnFunc:" destination="-1" eventType="touchUpInside" id="f7I-lc-uNy"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gww-tC-G56">
+                    <rect key="frame" x="322" y="27" width="26" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="aqD-vX-mel"/>
+                        <constraint firstAttribute="width" constant="26" id="iRh-8f-fXP"/>
+                    </constraints>
+                    <state key="normal" image="icon_change"/>
+                    <connections>
+                        <action selector="rotateCameraBtnFunc:" destination="-1" eventType="touchUpInside" id="Lwn-B8-vHA"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击拍照，长按摄像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSc-bP-yDA">
+                    <rect key="frame" x="123" y="450" width="129" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sight_video_focus" translatesAutoresizingMaskIntoConstraints="NO" id="cDi-p1-6Ox">
+                    <rect key="frame" x="151" y="297" width="73.333333333333314" height="73.333333333333314"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3i-Ao-Rf9">
+                    <rect key="frame" x="263" y="531" width="76" height="76"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="76" id="1As-Uu-ReG"/>
+                        <constraint firstAttribute="height" constant="76" id="eO5-mG-tHX"/>
+                    </constraints>
+                    <state key="normal" image="icon_finish_p"/>
+                    <connections>
+                        <action selector="confirmBtnFunc:" destination="-1" eventType="touchUpInside" id="wIP-aa-UUf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5x-fn-77d">
+                    <rect key="frame" x="35" y="531" width="76" height="76"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="76" id="2oz-1V-HiU"/>
+                        <constraint firstAttribute="width" constant="76" id="Fsv-vl-Xox"/>
+                    </constraints>
+                    <state key="normal" image="icon_return_n"/>
+                    <state key="highlighted" image="icon_return_p"/>
+                    <connections>
+                        <action selector="cancelBtnfunc:" destination="-1" eventType="touchUpInside" id="OR6-5Y-0Kl"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+            <constraints>
+                <constraint firstItem="eSc-bP-yDA" firstAttribute="centerX" secondItem="Rcc-g1-Gwv" secondAttribute="centerX" id="Gdh-aq-SZX"/>
+                <constraint firstItem="t5x-fn-77d" firstAttribute="leading" secondItem="Rcc-g1-Gwv" secondAttribute="leading" constant="35" id="Jk1-m6-zTP"/>
+                <constraint firstItem="VBb-wh-QTG" firstAttribute="centerX" secondItem="Rcc-g1-Gwv" secondAttribute="centerX" id="K07-gk-RIY"/>
+                <constraint firstItem="Gww-tC-G56" firstAttribute="top" secondItem="Rcc-g1-Gwv" secondAttribute="top" constant="27" id="KvP-Fc-0Of"/>
+                <constraint firstAttribute="bottom" secondItem="t5x-fn-77d" secondAttribute="bottom" constant="60" id="T4X-Zz-WHQ"/>
+                <constraint firstAttribute="trailing" secondItem="Gww-tC-G56" secondAttribute="trailing" constant="27" id="bJY-fj-jU2"/>
+                <constraint firstAttribute="trailing" secondItem="q3i-Ao-Rf9" secondAttribute="trailing" constant="36" id="cET-pg-eht"/>
+                <constraint firstAttribute="bottom" secondItem="VBb-wh-QTG" secondAttribute="bottom" constant="36" id="cgr-pV-wtC"/>
+                <constraint firstItem="cDi-p1-6Ox" firstAttribute="centerY" secondItem="Rcc-g1-Gwv" secondAttribute="centerY" id="hEU-4y-YiB"/>
+                <constraint firstAttribute="bottom" secondItem="q3i-Ao-Rf9" secondAttribute="bottom" constant="60" id="jvm-eR-Nyn"/>
+                <constraint firstItem="pjC-ZM-eD4" firstAttribute="leading" secondItem="Rcc-g1-Gwv" secondAttribute="leading" constant="59" id="mAd-wA-ceN"/>
+                <constraint firstAttribute="bottom" secondItem="pjC-ZM-eD4" secondAttribute="bottom" constant="116" id="p1E-uH-Eed"/>
+                <constraint firstItem="VBb-wh-QTG" firstAttribute="top" secondItem="eSc-bP-yDA" secondAttribute="bottom" constant="44" id="zIg-ue-I53"/>
+                <constraint firstItem="cDi-p1-6Ox" firstAttribute="centerX" secondItem="Rcc-g1-Gwv" secondAttribute="centerX" id="zpx-8c-ahI"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-465" y="22"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_change" width="26.666666030883789" height="20"/>
+        <image name="icon_finish_p" width="76" height="76"/>
+        <image name="icon_return_n" width="76" height="76"/>
+        <image name="icon_return_p" width="76" height="76"/>
+        <image name="record_video_back" width="29" height="16"/>
+        <image name="sight_video_focus" width="73.333335876464844" height="73.333335876464844"/>
+    </resources>
+</document>
