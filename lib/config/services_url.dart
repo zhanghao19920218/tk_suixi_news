@@ -9,4 +9,7 @@ const servicePath={
   'uploadFile': serviceUrl + 'api/common/upload', //上传文件的接口
   'like': serviceUrl + 'api/like/add', //点赞文章
   'uploadVideo': serviceUrl + 'api/article/addv', //上传V视频的接口
+  'sendArticles': serviceUrl + 'api/article/adds', //发布随手拍
+  'mineInfo': serviceUrl + 'api/user/index', //会员中心
+  'videoDetailInfo': serviceUrl + 'api/article/detail', //详细的V视频界面
 };

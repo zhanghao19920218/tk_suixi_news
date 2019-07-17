@@ -19,16 +19,16 @@ class Http {
     dio = new Dio();
 
     //--------flutter抓包---------- // ip:port
-    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-        (client) {
-      // config the http client
-      client.findProxy = (uri) {
-        //proxy all request to localhost:8888
-        return proxy;
-      };
-      // you can also create a new HttpClient to dio
-      // return new HttpClient();
-    };
+    // (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    //     (client) {
+    //   // config the http client
+    //   client.findProxy = (uri) {
+    //     //proxy all request to localhost:8888
+    //     return proxy;
+    //   };
+    //   // you can also create a new HttpClient to dio
+    //   // return new HttpClient();
+    // };
     //----------------------------------------
 
     //增加拦截器

@@ -7,6 +7,7 @@ import 'package:tk_suixi_news/pages/my_faovirte_page.dart';
 import 'package:tk_suixi_news/pages/person_edit_page.dart';
 import 'package:tk_suixi_news/pages/send_images_page/send_images_page.dart';
 import 'package:tk_suixi_news/pages/send_video_page/send_video_page.dart';
+import 'package:tk_suixi_news/pages/video_detail_info_page/video_detail_info_page.dart';
 import '../pages/news_detail_page.dart';
 import '../pages/sign_up_page/sign_up_page.dart';
 import '../pages/forget_pass_page/forget_pass_page.dart';
@@ -78,4 +79,14 @@ Handler sendImagesPageHandler = Handler(
   String imageUrl = params['imageUrl'].first; //图片地址
   Provider.of<SendImagesPageProvider>(context).setImage(BaseUrl + imageUrl);
   return SendImagesPage();
+});
+
+//视频详情的页面
+// VideoDetailInfoPage
+Handler videoDetailInfoPageHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  String videoId = params['videoId'].first; //图片地址
+  return VideoDetailInfoPage(
+    video_id: videoId,
+  );
 });

@@ -23,7 +23,7 @@ class SpecialNewsFormTwo extends StatelessWidget {
               child: _threePictures(),
             ),
             SpecialNormalTime(
-              time: 2,
+              time: '2小时前',
               watchTimes: 1265,
               goodLook: 1265,
             ),

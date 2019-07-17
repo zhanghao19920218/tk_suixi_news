@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:tk_suixi_news/pages/login_page/login_page.dart';
 import 'package:tk_suixi_news/provide/found_password_page_provider.dart';
 import 'package:tk_suixi_news/provide/home_news_info_provider.dart';
+import 'package:tk_suixi_news/provide/home_special_page_provider.dart';
+import 'package:tk_suixi_news/provide/mine_info_page.dart';
 import 'package:tk_suixi_news/provide/passager_show_like_provider.dart';
 import 'package:tk_suixi_news/provide/profit_edit_page_provider.dart';
 import 'package:tk_suixi_news/provide/send_images_page_provider.dart';
 import 'package:tk_suixi_news/provide/send_video_page_provider.dart';
 import 'package:tk_suixi_news/provide/sign_up_page_provider.dart';
+import 'package:tk_suixi_news/provide/video_detail_info_page_provider.dart';
+import 'package:tk_suixi_news/provide/video_page_provider.dart';
 import 'pages/index_page.dart'; //首页
 import 'package:provider/provider.dart'; //导入Provider状态管理
 import 'provide/index_page_provider.dart'; //下面tabBar的状态管理
@@ -28,6 +32,10 @@ void main() {
   var passagerLikeShowProvider = new PassagesShowLikeProvider(); //喜欢文章的Provider
   var sendVideoPageProvider = new SendVideoPageProvider(); //发布V视频的Provider
   var sendImagesPageProvider = new SendImagesPageProvider(); //发布一个图文信息的Provider
+  var homeSpecialPageProvider = new HomeSpecialPageProvider(); //获取V视频列表的Provider
+  var mineInfoProvider = new UserMinedInfoProvider(); //请求个人信息的Provider
+  var videoDetailInfoProvider = new VideoDetailInfoPageProvider(); //请求视频详情的Provider
+  var videoPageProvider = new VideoPageProvider(); //随手拍的Provider
 
   //多重状态管理
   runApp(MultiProvider(
@@ -61,6 +69,18 @@ void main() {
       ),
       Provider<SendImagesPageProvider>.value(
         value: sendImagesPageProvider,
+      ),
+      Provider<HomeSpecialPageProvider>.value(
+        value: homeSpecialPageProvider,
+      ),
+      Provider<UserMinedInfoProvider>.value(
+        value: mineInfoProvider,
+      ),
+      Provider<VideoDetailInfoPageProvider>.value(
+        value: videoDetailInfoProvider,
+      ),
+      Provider<VideoPageProvider>.value(
+        value: videoPageProvider,
       )
     ],
     child: MyApp(),
@@ -68,6 +88,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     //路由引入

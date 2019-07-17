@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tk_suixi_news/pages/home_page/special_home_page/special_normal_time.dart';
-import '../../../routers/application.dart';
 
-//首页专栏一张照片的新闻iten
-class SpecialNewsFormatOneItem extends StatelessWidget {
-
+class HomeChildVideoNewsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,7 +10,7 @@ class SpecialNewsFormatOneItem extends StatelessWidget {
       //保证下面下划线
       child: InkWell(
           onTap: () {
-            Application.router.navigateTo(context, '/newsDetail?news_id=18');
+            // Application.router.navigateTo(context, '/newsDetail?news_id=18');
           },
           child: Container(
             margin: const EdgeInsets.fromLTRB(15.0, 21.0, 15.0, 0.0),
@@ -25,28 +22,29 @@ class SpecialNewsFormatOneItem extends StatelessWidget {
                     bottom: BorderSide(color: Colors.black26, width: 1))),
             child: Row(
               children: <Widget>[
-                _combineTimeTitle(),
                 Expanded(
-                  child: _newsImage(),
-                )
+                  child: _videoImage(),
+                ),
+                _combineTimeTitle(),
               ],
             ),
           )),
     );
   }
 
-  //显示新闻图片
-  Widget _newsImage() {
+  //显示一个ImageView和一个时间
+  Widget _videoImage() {
     return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5.0)
+      ),
+      child: Image.network(
+        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3882265467,3924971696&fm=27&gp=0.jpg',
         width: ScreenUtil().setWidth(228),
-        height: ScreenUtil().setHeight(163),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(5.0),
-          child: Image.network(
-            'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1099457074,1485919230&fm=173&app=25&f=JPEG',
-            fit: BoxFit.cover,
-          ),
-        ));
+        height: ScreenUtil().setHeight(164),
+        fit: BoxFit.cover,
+      ),
+    );
   }
 
   //显示标题
@@ -62,7 +60,7 @@ class SpecialNewsFormatOneItem extends StatelessWidget {
   //组合标题和下方时间
   Widget _combineTimeTitle() {
     return Container(
-      padding: const EdgeInsets.only(right: 23, bottom: 0),
+      padding: const EdgeInsets.only(left: 23, bottom: 0),
       width: ScreenUtil().setWidth(440),
       child: Column(
         children: <Widget>[

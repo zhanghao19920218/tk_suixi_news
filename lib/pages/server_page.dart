@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tk_suixi_news/config/fonts.dart';
 import 'package:tk_suixi_news/model/server_section_model.dart';
 import 'package:tk_suixi_news/pages/server_page/server_page_section_item.dart';
 
@@ -9,7 +10,7 @@ class SerivcePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('服务'),
+        title: ImageLogo.share.logo,
         centerTitle: true,
       ),
       body: Container(

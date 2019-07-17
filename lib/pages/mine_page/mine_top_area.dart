@@ -1,27 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:tk_suixi_news/config/fonts.dart';
 import 'package:tk_suixi_news/routers/application.dart';
+import 'package:tk_suixi_news/provide/mine_info_page.dart';
 
 class MinePageTopArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: ScreenUtil().setWidth(750),
-      height: ScreenUtil().setHeight(590),
-      color: Colors.white,
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: <Widget>[
-          _backgroundImage(),
-          _topTitleButton(),
-          _sendButton(context),
-          _userAvatar(),
-          _userName(),
-          _userPhone(),
-          _scoreInkWell()
-        ],
-      ),
-    );
+    return _mineInfoPage(context);
   }
 
   //设置背景图片
@@ -36,16 +23,7 @@ class MinePageTopArea extends StatelessWidget {
 
   //上方的濉溪发布Text和按钮
   Widget _topTitleButton() {
-    return Positioned(
-      top: 35,
-      child: Text(
-        '濉溪发布',
-        style: TextStyle(
-            fontSize: ScreenUtil().setSp(36),
-            fontWeight: FontWeight.bold,
-            color: Colors.white),
-      ),
-    );
+    return Positioned(top: 35, child: ImageLogo.share.logo);
   }
 
   //设置右侧的发布按钮
@@ -55,8 +33,8 @@ class MinePageTopArea extends StatelessWidget {
         right: 23,
         top: 35,
         child: InkWell(
-          onTap: (){
-            Application.router.navigateTo(context, '/personEditPage');
+          onTap: () {
+            // Application.router.navigateTo(context, '/personEditPage');
           },
           child: Icon(
             Icons.settings,
@@ -67,24 +45,27 @@ class MinePageTopArea extends StatelessWidget {
   }
 
   //用户头像
-  Widget _userAvatar() {
+  Widget _userAvatar(BuildContext context, String avatar) {
     return Positioned(
       top: 94,
       child: Container(
         width: 80,
         height: 80,
-        child: CircleAvatar(
-          backgroundImage: AssetImage('lib/assets/place_holder_image.png'),
-          child: CircleAvatar(
-            backgroundImage: NetworkImage(
-                'https://b-ssl.duitang.com/uploads/item/201703/31/20170331231807_BPdHz.thumb.700_0.jpeg'),
-            radius: 40,
+        child: InkWell(
+          onTap: () {
+            print('点击进入个人信息编辑');
+            Application.router.navigateTo(context, '/personEditPage');
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: FadeInImage.assetNetwork(
+              width: 40,
+              height: 40,
+              placeholder: 'lib/assets/avatar_default.png',
+              image: avatar,
+              fit: BoxFit.cover,
+            ),
           ),
-          // child: Image.network(
-          //   'https://b-ssl.duitang.com/uploads/item/201703/31/20170331231807_BPdHz.thumb.700_0.jpeg',
-          //   fit: BoxFit.cover,
-          // ),
-          // radius: ScreenUtil().setWidth(74),
         ),
         decoration: BoxDecoration(
             // image: DecorationImage(image: AssetImage('lib/assets/place_holder_image.png')),
@@ -96,18 +77,18 @@ class MinePageTopArea extends StatelessWidget {
   }
 
   //用户名称
-  Widget _userName() {
+  Widget _userName(BuildContext context) {
     return Positioned(
       top: 189,
       child: Text(
-        '用户名',
+        Provider.of<UserMinedInfoProvider>(context).model.username,
         style: TextStyle(color: Colors.white, fontSize: ScreenUtil().setSp(28)),
       ),
     );
   }
 
   //手机号码
-  Widget _userPhone() {
+  Widget _userPhone(BuildContext context, String mobile) {
     return Positioned(
         top: 217,
         child: Container(
@@ -117,7 +98,8 @@ class MinePageTopArea extends StatelessWidget {
           width: ScreenUtil().setWidth(200),
           height: ScreenUtil().setHeight(48),
           child: Center(
-            child: Text('13812345678',
+            child: Text(
+                mobile,
                 style: TextStyle(
                     color: Color.fromRGBO(255, 158, 168, 1),
                     fontSize: ScreenUtil().setSp(24))),
@@ -126,7 +108,7 @@ class MinePageTopArea extends StatelessWidget {
   }
 
   //设置积分按钮
-  Widget _scoreInkWell() {
+  Widget _scoreInkWell(BuildContext context, int score) {
     return Positioned(
       bottom: 0,
       child: RaisedButton(
@@ -137,20 +119,21 @@ class MinePageTopArea extends StatelessWidget {
         },
         shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(18.0)),
-        child: _scoresTitle(),
+        child: _scoresTitle(context, score),
       ),
     );
   }
 
   //积分按钮的标题
-  Widget _scoresTitle() {
+  Widget _scoresTitle(BuildContext context, int score) {
     return Container(
       color: Colors.white,
       child: Row(
         children: <Widget>[
-          Icon(
-            Icons.radio_button_checked,
-            size: 30,
+          Image.asset(
+            'lib/assets/gold_coins.png',
+            width: 13,
+            height: 15,
           ),
           Container(
             width: 6,
@@ -159,11 +142,53 @@ class MinePageTopArea extends StatelessWidget {
           Container(
             width: 8,
           ),
-          Text('132773',
+          Text('${score}',
               style: TextStyle(
                   color: Color.fromRGBO(153, 153, 153, 1),
                   fontSize: ScreenUtil().setSp(28))),
         ],
+      ),
+    );
+  }
+
+  //请求个人信息页面
+  Widget _mineInfoPage(BuildContext context) {
+    return Container(
+      width: ScreenUtil().setWidth(750),
+      height: ScreenUtil().setHeight(590),
+      color: Colors.white,
+      child: StreamBuilder(
+        stream: Provider.of<UserMinedInfoProvider>(context).stream,
+        builder: (BuildContext context,
+            AsyncSnapshot<UserInfomrationModel> snapshot) {
+          if (snapshot.hasData) {
+            return Stack(
+              alignment: Alignment.topCenter,
+              children: <Widget>[
+                _backgroundImage(),
+                _topTitleButton(),
+                _sendButton(context),
+                _userName(context),
+                _userAvatar(context, snapshot.data.avatar),
+                _userPhone(context, snapshot.data.mobile),
+                _scoreInkWell(context, snapshot.data.scores)
+              ],
+            );
+          } else {
+            return Stack(
+              alignment: Alignment.topCenter,
+              children: <Widget>[
+                _backgroundImage(),
+                _topTitleButton(),
+                _sendButton(context),
+                _userName(context),
+                _userAvatar(context, ''),
+                _userPhone(context, ''),
+                _scoreInkWell(context, 0)
+              ],
+            );
+          }
+        },
       ),
     );
   }

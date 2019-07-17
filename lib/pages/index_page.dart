@@ -16,6 +16,7 @@ class IndexPage extends StatelessWidget {
         body: Scaffold(
       body: IndexPageBody(),
       bottomNavigationBar: IndexPageBottom(),
+      resizeToAvoidBottomInset: false,
     ));
   }
 }

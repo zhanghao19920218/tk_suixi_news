@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
-import 'package:tk_suixi_news/config/native_method.dart'; //直播列表的跳转
+import 'package:tk_suixi_news/config/native_method.dart';
+import 'package:tk_suixi_news/routers/application.dart'; //直播列表的跳转
 //V视直播列表的Item
 
 //首页的下方时间，观看数量和点赞
 const style = TextStyle(color: Colors.black45); //通用的Style
 
 class ShowPageListItem extends StatelessWidget {
-  static const platform =
-      const MethodChannel(methodChannel); //获取平台的方法
+  static const platform = const MethodChannel(methodChannel); //获取平台的方法
   //显示第一帧照片的信息
   final String video_first_img;
   //显示视频信息
@@ -25,6 +25,10 @@ class ShowPageListItem extends StatelessWidget {
   final int commentNum;
   //点赞的数量
   final int goodLookNum;
+  //视频地址
+  final String videoUrl;
+  //视频的id
+  final String videoId;
 
   ShowPageListItem(
       {Key key,
@@ -34,27 +38,36 @@ class ShowPageListItem extends StatelessWidget {
       @required this.avatar,
       @required this.nick_name,
       @required this.commentNum,
-      @required this.goodLookNum})
+      @required this.goodLookNum,
+      @required this.videoUrl,
+      @required this.videoId
+      })
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          Stack(
-            alignment: Alignment.topCenter,
-            children: <Widget>[
-              _newsImage(),
-              _newsInfo(),
-              _playItem(),
-              _playTimeItem(),
-            ],
-          ),
-          _bottomItem()
-        ],
+    return InkWell(
+      onTap: (){
+        print('跳转进入视频详情');
+        Application.router.navigateTo(context, '/videoDetailsPage?videoId=$videoId');
+      },
+      child: Container(
+        margin: const EdgeInsets.only(top: 10),
+        color: Colors.white,
+        child: Column(
+          children: <Widget>[
+            Stack(
+              alignment: Alignment.topCenter,
+              children: <Widget>[
+                _newsImage(),
+                _newsInfo(),
+                _playItem(),
+                _playTimeItem(),
+              ],
+            ),
+            _bottomItem()
+          ],
+        ),
       ),
     );
   }
@@ -105,9 +118,7 @@ class ShowPageListItem extends StatelessWidget {
   Future<Null> _showOnlineTVPage() async {
     print('点击了视频播放按钮'); //跳转直播的页面
     try {
-      Map<String, dynamic> map = {
-      "address": "https://hwapi.yunshicloud.com/m87oxo/251011.m3u8"
-    };
+      Map<String, dynamic> map = {"address": this.videoUrl};
       final int result = await platform.invokeMethod(playMethod, map);
       print(result);
     } on PlatformException catch (e) {
@@ -155,10 +166,20 @@ class ShowPageListItem extends StatelessWidget {
       height: ScreenUtil().setHeight(105),
       child: Row(
         children: <Widget>[
-          CircleAvatar(
-            backgroundImage: NetworkImage(avatar),
-            radius: 15,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(15.0),
+            child: FadeInImage.assetNetwork(
+              width: 30,
+              height: 30,
+              placeholder: 'lib/assets/avatar_default.png',
+              image: this.avatar,
+              fit: BoxFit.cover,
+            ),
           ),
+          // CircleAvatar(
+          //   backgroundImage: NetworkImage(avatar),
+          //   radius: 15,
+          // ),
           Container(
             width: ScreenUtil().setWidth(20),
           ),
@@ -204,11 +225,16 @@ class ShowPageListItem extends StatelessWidget {
       child: Row(
         children: <Widget>[
           //显示Icon,
-          Icon(
-            Icons.favorite,
-            size: 15.0,
-            color: Colors.black12,
+          Image.asset(
+            'lib/assets/like.png',
+            width: 11,
+            height: 11,
           ),
+          // Icon(
+          //   Icons.favorite,
+          //   size: 15.0,
+          //   color: Colors.black12,
+          // ),
           //显示数字
           Container(
             padding: const EdgeInsets.only(left: 6),

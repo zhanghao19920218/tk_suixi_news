@@ -81,6 +81,19 @@ flutter:
     - lib/assets/login_assets/unchoose.png  #未选中
     - lib/assets/delete.png  #未选中
     - lib/assets/add_photo.png
+    - lib/assets/dislike.png #不喜欢
+    - lib/assets/like.png #喜欢
+    - lib/assets/navigationBarTitle.png #导航栏上的标题
+    - lib/assets/home_tab.png #未选中
+    - lib/assets/home_selected_tab.png #选中
+    - lib/assets/camera_tab.png
+    - lib/assets/camera_selected_tab.png
+    - lib/assets/server_tab.png
+    - lib/assets/server_tab_selected.png
+    - lib/assets/mine_tab.png
+    - lib/assets/mine_selected_tab.png
+    - lib/assets/avatar_default.png
+    - lib/assets/gold_coins.png #个人页面的金币
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

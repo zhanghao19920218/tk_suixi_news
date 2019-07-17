@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+import 'package:tk_suixi_news/config/progress_hud.dart';
 import 'package:tk_suixi_news/pages/send_images_page/send_images_item.dart';
 import 'package:tk_suixi_news/provide/send_images_page_provider.dart';
 
@@ -53,7 +54,7 @@ class SendImagesPage extends StatelessWidget {
     return RaisedButton(
         onPressed: () {
           print('点击了发表视频按钮');
-          // _pressedVVideoButton(context);
+          _pressedSendArticlesImage(context);
         },
         child: Text(
           '发表',
@@ -96,4 +97,13 @@ class SendImagesPage extends StatelessWidget {
       ),
     );
   }
+
+  //点击发布图文消息的列表
+  _pressedSendArticlesImage(BuildContext context){
+    Provider.of<SendImagesPageProvider>(context).sendVVideoPort(name, context, (){
+      Loading.alert('上传成功', 1);
+      Navigator.of(context).pop(); //返回上一个页面
+    });
+  }
+
 }

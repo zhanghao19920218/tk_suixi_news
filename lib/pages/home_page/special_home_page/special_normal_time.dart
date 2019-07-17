@@ -7,7 +7,7 @@ import 'package:tk_suixi_news/provide/passager_show_like_provider.dart';
 const style = TextStyle(color: Colors.black45); //通用的Style
 
 class SpecialNormalTime extends StatelessWidget {
-  final int time; //时间
+  final String time; //时间
   final int watchTimes; //观看数量
   final int goodLook; //点赞
 
@@ -25,7 +25,7 @@ class SpecialNormalTime extends StatelessWidget {
           //显示时间
           Expanded(
             child: Text(
-              '$time小时前',
+              time,
               style: style,
             ),
           ),

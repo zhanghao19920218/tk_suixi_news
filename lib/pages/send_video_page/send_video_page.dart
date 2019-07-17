@@ -19,7 +19,7 @@ class SendVideoPage extends StatelessWidget {
   //视频长度
   final String videoLengthUrl;
   //修改里面的内容
-  String name = '';
+  String content = '';
 
   SendVideoPage(
       {Key key,
@@ -98,7 +98,8 @@ class SendVideoPage extends StatelessWidget {
       child: CupertinoTextField(
         onChanged: (text) {
           //修改内容标题
-          this.name = text;
+          print('更新内容$text');
+          content = text;
         },
         decoration:
             BoxDecoration(border: Border.all(color: Colors.transparent)),
@@ -150,8 +151,9 @@ class SendVideoPage extends StatelessWidget {
 
   //发布V视频的按钮
   _pressedVVideoButton(BuildContext context) {
+    print('发布的标题:$content');
     Provider.of<SendVideoPageProvider>(context).sendVVideoPort(
-        this.name, this.videoUrl, this.imageUrl, this.videoLengthUrl, (){
+        this.content, this.videoUrl, this.imageUrl, this.videoLengthUrl, (){
           Loading.alert('发布V视频成功', 1);
           Navigator.of(context).pop();
         });

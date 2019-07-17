@@ -8,7 +8,7 @@ class VideoPageListItem extends StatelessWidget {
   final String user_name; //用户名称
   final String user_describe; //用户描述
   final List<String> images; //用户的照片
-  final int time; //时间前
+  final String time; //时间前
   final int watchTimes; //观看数量
   final int goodLook; //点赞
   final String video_first_img; //视频第一帧的照片地址
@@ -61,7 +61,7 @@ class VideoPageListItem extends StatelessWidget {
         child: FadeInImage.assetNetwork(
           width: ScreenUtil().setWidth(84),
           height: ScreenUtil().setHeight(84),
-          placeholder: 'lib/assets/place_holder_image.png',
+          placeholder: 'lib/assets/avatar_default.png',
           image: this.avatar_address,
           fit: BoxFit.cover,
         ),
@@ -104,11 +104,13 @@ class VideoPageListItem extends StatelessWidget {
           },
           child: Container(
               width: ScreenUtil().setWidth(180),
+              height: ScreenUtil().setHeight(180),
               color: Colors.white,
               padding: const EdgeInsets.fromLTRB(0, 0.0, 0, 10.0),
               margin: const EdgeInsets.only(bottom: 3.0),
               child: Image.network(
                 val,
+                fit: BoxFit.cover,
               )),
         );
       }).toList();

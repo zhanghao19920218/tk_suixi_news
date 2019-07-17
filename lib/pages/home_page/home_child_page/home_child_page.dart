@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tk_suixi_news/pages/home_page/home_child_page/home_child_ask_gov_page.dart';
+import 'package:tk_suixi_news/pages/home_page/home_child_page/home_news_child_page.dart';
 import 'package:tk_suixi_news/pages/home_page/home_child_page/home_special_page.dart';
+import 'package:tk_suixi_news/pages/home_page/home_child_page/home_video_nchild_page.dart';
 import '../../../provide/home_page_tab_provider.dart';
 
 class HomeChildPage extends StatelessWidget {
@@ -16,6 +19,20 @@ class HomeChildPage extends StatelessWidget {
     return PageView.builder(
       itemCount: Provider.of<HomePageTabProvider>(context).model.titles.length,
       itemBuilder: (context, index) {
+        //新闻页面
+        if (index == 2) {
+          return HomeNewsChildPage();
+        }
+
+        //视讯
+        if (index == 3) {
+          return HomeVideoNewsChildPage();
+        }
+
+        //问政
+        if (index == 4) {
+          return HomeAskGovChildPage();
+        }
         return HomeSpecialPage(title: Provider.of<HomePageTabProvider>(context).model.titles[index],);
       },
       controller:

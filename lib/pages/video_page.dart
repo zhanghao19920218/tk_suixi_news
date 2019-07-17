@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:tk_suixi_news/model/video_list_item_model.dart';
+import 'package:tk_suixi_news/provide/video_page_provider.dart';
+import 'package:tk_suixi_news/config/fonts.dart';
 import 'package:tk_suixi_news/pages/normal_page/bottom_alert_sheet.dart';
 import 'package:tk_suixi_news/pages/video_page/video_page_list_item.dart';
 
 //拍客
 class VideoPage extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
+    //请求随手拍
+    Provider.of<VideoPageProvider>(context).refreshVideoPage();
+
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('濉溪发布'),
+        title: ImageLogo.share.logo,
         centerTitle: true,
         actions: <Widget>[
           _sendButton(context),
@@ -19,7 +29,7 @@ class VideoPage extends StatelessWidget {
         child: Center(
           child: Container(
             width: ScreenUtil().setWidth(750.0),
-            child: _itemListView(),
+            child: _listOrContainer(context),
           ),
         ),
       ),
@@ -57,50 +67,38 @@ class VideoPage extends StatelessWidget {
         ));
   }
 
+  //设置返回到底是加载还是一个列表
+  Widget _listOrContainer(BuildContext context){
+    return StreamBuilder(
+      stream: Provider.of<VideoPageProvider>(context).stream,
+      builder: (BuildContext context, AsyncSnapshot<List<VideoDetailListItem>> snapshot){
+        if (snapshot.hasData) {
+          return _itemListView(snapshot.data);
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+
   //设置下方的列表
-  Widget _itemListView() {
-    return ListView(
-      children: <Widget>[
-        VideoPageListItem(
-          avatar_address:
-              'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-          user_name: '微信用户',
-          user_describe: '濉溪县，隶属于安徽省淮北市。位于安徽省北部，总面积1987平方公里。',
-          images: [
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-          ],
-          time: 8,
-          watchTimes: 1265,
-          goodLook: 1265,
-          isVideo: false,
-        ),
-        VideoPageListItem(
-          avatar_address:
-              'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-          user_name: '微信用户',
-          user_describe: '濉溪县，隶属于安徽省淮北市。位于安徽省北部，总面积1987平方公里。',
-          images: [
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-            'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-          ],
-          time: 8,
-          watchTimes: 1265,
-          goodLook: 1265,
-          isVideo: true,
-          video_first_img: 'https://b-ssl.duitang.com/uploads/item/201603/16/20160316192951_nF4jS.jpeg',
-        )
-      ],
+  Widget _itemListView(List<VideoDetailListItem> _lists) {
+    return ListView.builder(
+      itemCount: _lists.length,
+      itemBuilder: (BuildContext context, int index){
+        return VideoPageListItem(
+          avatar_address: _lists[index].avatar,
+          user_name: _lists[index].nickname,
+          user_describe: _lists[index].name,
+          images: _lists[index].images,
+          time: _lists[index].time,
+          watchTimes: _lists[index].visitNum,
+          goodLook: _lists[index].likeNum,
+          isVideo: _lists[index].images is List ? false : true,
+        );
+      },
     );
   }
 }

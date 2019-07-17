@@ -24,6 +24,7 @@ class PersonEditPage extends StatelessWidget {
           ],
         ),
       ),
+      resizeToAvoidBottomInset: false,
     );
   }
 

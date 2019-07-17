@@ -79,6 +79,8 @@ class LoadingDialog extends Dialog {
                   padding: const EdgeInsets.only(top: 20.0),
                   child: Text(
                     text,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Colors.white),
                   ),
                 )
