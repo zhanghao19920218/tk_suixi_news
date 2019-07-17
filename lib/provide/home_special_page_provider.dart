@@ -11,7 +11,7 @@ class HomeSpecialPageProvider {
   //当前的页面
   int page;
 
-  String name = '';
+  // String name = '';
 
   //当前列表的list
   List<VideoVPlayerListModel> _dataSource;
@@ -44,19 +44,19 @@ class HomeSpecialPageProvider {
   //获取V视频列表的接口
   sendVVideoPort(String module, VoidCallback block) {
     //防止重绘
-    print(name);
-    if (name != module) {
-      name = module;
-      var formData = {'module': module, 'page': page};
-      Http.request('articleIndex', formData: formData).then((val) {
-        //文件上传成功后的返回
-        if (val['code'] == 1) {
-          List<VideoVPlayerListModel> lists =
-              VideoShowModel.fromJson(val).data.data;
-          refreshDataSources(lists);
-        }
-      });
-    }
+    // if (_dataSource.length > 0) {
+    //   return;
+    // }
+    
+    var formData = {'module': module, 'page': page};
+    Http.request('articleIndex', formData: formData).then((val) {
+      //文件上传成功后的返回
+      if (val['code'] == 1) {
+        List<VideoVPlayerListModel> lists =
+            VideoShowModel.fromJson(val).data.data;
+        refreshDataSources(lists);
+      }
+    });
   }
 
   dispose() {

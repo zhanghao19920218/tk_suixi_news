@@ -39,6 +39,8 @@ dependencies:
 
   image_picker: ^0.6.0+3
 
+  cached_network_image: ^1.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -94,6 +96,7 @@ flutter:
     - lib/assets/mine_selected_tab.png
     - lib/assets/avatar_default.png
     - lib/assets/gold_coins.png #个人页面的金币
+    - lib/assets/no_data_contain.png #没有数据包含
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

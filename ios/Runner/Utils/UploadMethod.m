@@ -13,6 +13,8 @@
 #import "TGHttpParamsManager.h"
 //获取文件的model
 #import "FileModel.h"
+//压缩图片
+#import "UIImage+HJImage.h"
 
 #define K_JT_msg                    @"msg"
 #define K_JT_code                   @"code"
@@ -83,7 +85,7 @@ static UploadMethod *_instance = nil;
     __block NSString *url = @"";
     
     __weak BaseViewController *weakCameraController = cameraController;
-    NSData *data = UIImagePNGRepresentation(image);
+    NSData *data = [image compressImageNoAffectQuality];
     //打开HUD
     [weakCameraController showLoading:@""];
     

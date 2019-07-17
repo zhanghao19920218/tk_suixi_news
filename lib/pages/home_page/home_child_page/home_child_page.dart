@@ -12,7 +12,7 @@ class HomeChildPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<HomePageTabProvider>(context)
-        .changeTabTitles(['V视频', '濉溪TV', '新闻', '视讯', '问政']);
+        .changeTabTitles(['V视频', '新闻', '视讯', '问政']);
     //创建PageController
     Provider.of<HomePageTabProvider>(context)
         .setPageController(PageController(initialPage: 0));
@@ -20,17 +20,17 @@ class HomeChildPage extends StatelessWidget {
       itemCount: Provider.of<HomePageTabProvider>(context).model.titles.length,
       itemBuilder: (context, index) {
         //新闻页面
-        if (index == 2) {
+        if (index == 1) {
           return HomeNewsChildPage();
         }
 
         //视讯
-        if (index == 3) {
+        if (index == 2) {
           return HomeVideoNewsChildPage();
         }
 
         //问政
-        if (index == 4) {
+        if (index == 3) {
           return HomeAskGovChildPage();
         }
         return HomeSpecialPage(title: Provider.of<HomePageTabProvider>(context).model.titles[index],);

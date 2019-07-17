@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:tk_suixi_news/config/native_method.dart';
-import 'package:tk_suixi_news/routers/application.dart'; //直播列表的跳转
+import 'package:tk_suixi_news/routers/application.dart';
+import 'package:cached_network_image/cached_network_image.dart'; //带有缓存的imageUrl
 //V视直播列表的Item
 
 //首页的下方时间，观看数量和点赞
@@ -74,8 +75,9 @@ class ShowPageListItem extends StatelessWidget {
 
   //显示一个ImageView.上面还有新闻信息和地址
   Widget _newsImage() {
-    return Image.network(
-      video_first_img,
+    return Image(
+      image:  CachedNetworkImageProvider(video_first_img),
+      // video_first_img,
       colorBlendMode: BlendMode.darken,
       color: Colors.black38,
       fit: BoxFit.cover,

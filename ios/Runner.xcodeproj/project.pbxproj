@@ -12,6 +12,7 @@
 		3B80C3941E831B6300D905FE /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; };
 		3B80C3951E831B6300D905FE /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		424C0D425BB1662F9521C074 /* libPods-Runner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D4AFAAA7A2C25D7A32403D /* libPods-Runner.a */; };
+		7302689422DEAFF400515A12 /* UIImage+HJImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7302689322DEAFF400515A12 /* UIImage+HJImage.m */; };
 		73084A7D22C61BA100E4F6C7 /* NELivePlayerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73084A7C22C61BA000E4F6C7 /* NELivePlayerFramework.framework */; };
 		73084A7E22C61BA100E4F6C7 /* NELivePlayerFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73084A7C22C61BA000E4F6C7 /* NELivePlayerFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		73084A8622C61C9E00E4F6C7 /* UIView+NEPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 73084A8222C61C9E00E4F6C7 /* UIView+NEPlayer.m */; };
@@ -62,6 +63,8 @@
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		3B80C3931E831B6300D905FE /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = App.framework; path = Flutter/App.framework; sourceTree = "<group>"; };
+		7302689222DEAFF400515A12 /* UIImage+HJImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HJImage.h"; sourceTree = "<group>"; };
+		7302689322DEAFF400515A12 /* UIImage+HJImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HJImage.m"; sourceTree = "<group>"; };
 		73084A7C22C61BA000E4F6C7 /* NELivePlayerFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NELivePlayerFramework.framework; sourceTree = "<group>"; };
 		73084A8022C61C9D00E4F6C7 /* NELivePlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NELivePlayerControlView.h; sourceTree = "<group>"; };
 		73084A8122C61C9E00E4F6C7 /* UIView+NEPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NEPlayer.h"; sourceTree = "<group>"; };
@@ -138,6 +141,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7302688E22DEACE700515A12 /* ImageUtils */ = {
+			isa = PBXGroup;
+			children = (
+				7302689222DEAFF400515A12 /* UIImage+HJImage.h */,
+				7302689322DEAFF400515A12 /* UIImage+HJImage.m */,
+			);
+			path = ImageUtils;
+			sourceTree = "<group>";
+		};
 		73084A7F22C61C9000E4F6C7 /* NELiverPlayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +184,7 @@
 		738E535722D8109400B581B3 /* ShotController */ = {
 			isa = PBXGroup;
 			children = (
+				7302688E22DEACE700515A12 /* ImageUtils */,
 				73BA24CD22DC51E300D0647B /* Utils */,
 				73BA24C922DC266C00D0647B /* NSString+IsEmpty */,
 				73BA24C522DC257D00D0647B /* Model */,
@@ -363,7 +376,7 @@
 				TargetAttributes = {
 					97C146ED1CF9000F007C117D = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = A9K56W497Z;
+						DevelopmentTeam = VKSGMUVB34;
 					};
 				};
 			};
@@ -479,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73A8CD8D22DC16C700E9A0E6 /* TGStaticTool.m in Sources */,
+				7302689422DEAFF400515A12 /* UIImage+HJImage.m in Sources */,
 				73084A8622C61C9E00E4F6C7 /* UIView+NEPlayer.m in Sources */,
 				978B8F6F1D3862AE00F588F7 /* AppDelegate.m in Sources */,
 				97C146F31CF9000F007C117D /* main.m in Sources */,
@@ -576,7 +590,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = A9K56W497Z;
+				DEVELOPMENT_TEAM = VKSGMUVB34;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -704,7 +718,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = A9K56W497Z;
+				DEVELOPMENT_TEAM = VKSGMUVB34;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -730,7 +744,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = A9K56W497Z;
+				DEVELOPMENT_TEAM = VKSGMUVB34;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

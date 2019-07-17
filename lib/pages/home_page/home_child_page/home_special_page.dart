@@ -8,6 +8,7 @@ import 'package:flutter_easyrefresh/bezier_circle_header.dart';
 import 'package:flutter_easyrefresh/bezier_bounce_footer.dart';
 import 'package:tk_suixi_news/pages/show_page/show_page_list_item.dart';
 import 'package:tk_suixi_news/provide/home_special_page_provider.dart';
+import 'package:tk_suixi_news/pages/normal_page/loading_without_data.dart';
 
 class HomeSpecialPage extends StatelessWidget {
   final GlobalKey<EasyRefreshState> _easyRefreshKey =
@@ -23,7 +24,7 @@ class HomeSpecialPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //请求网络数据
-    Provider.of<HomeSpecialPageProvider>(context).sendVVideoPort(title, () {});
+    Provider.of<HomeSpecialPageProvider>(context).sendVVideoPort('V视频', () {});
 
     return Container(
       width: ScreenUtil().setWidth(750),
@@ -33,7 +34,7 @@ class HomeSpecialPage extends StatelessWidget {
           if (snapshot.hasData) {
             return _listBuilder(snapshot.data);
           } else {
-            return _loadingCircular();
+            return emptyDataWidget();
           }
         },
         stream: Provider.of<HomeSpecialPageProvider>(context).stream,
@@ -57,17 +58,10 @@ class HomeSpecialPage extends StatelessWidget {
           nick_name: datas[index - 1].nickname,
           commentNum: int.parse(datas[index - 1].commentNum),
           goodLookNum: int.parse(datas[index - 1].likeNum),
-          videoUrl: datas[index-1].video,
-          videoId: datas[index-1].id,
+          videoUrl: datas[index - 1].video,
+          videoId: datas[index - 1].id,
         );
       },
-    );
-  }
-
-  //加载的界面
-  Widget _loadingCircular() {
-    return Center(
-      child: CircularProgressIndicator(),
     );
   }
 }
